@@ -4,12 +4,12 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 const { default: mongoose } = require("mongoose");
-const userController = require("./Controllers/user.controller");
-const shoeController = require("./Controllers/shoe.controller");
-const menController = require("./Controllers/men.controller");
-const womenController = require("./Controllers/women.controller");
-const Authentication = require("./Middleware/authentication");
-const cartController = require("./Controllers/cart.controller");
+const userController = require("../Controllers/user.controller");
+const shoeController = require("../Controllers/shoe.controller");
+const menController = require("../Controllers/men.controller");
+const womenController = require("../Controllers/women.controller");
+const Authentication = require("../Middleware/authentication");
+const cartController = require("../Controllers/cart.controller");
 // const shoeController = require("./Controllers/shoe.controller");
 
 app.use(express.json());
