@@ -21,7 +21,7 @@ app.use(
     optionSuccessStatus: 200,
   })
 );
-
+const port_no = process.env.PORT || 8080;
 app.get("/", (req, res) => {
   res.send("homepage");
 });
@@ -33,7 +33,7 @@ app.use('/women',womenController)
 app.use('/cart',Authentication,cartController)
 
 
-app.listen(process.env.PORT, async () => {
+app.listen(port_no, async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
     console.log("connected to Mongoose server");
