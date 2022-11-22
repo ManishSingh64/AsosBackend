@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv");
+dotenv.config();
 const { default: mongoose } = require("mongoose");
 const userController = require("./Controllers/user.controller");
 const shoeController = require("./Controllers/shoe.controller");
@@ -10,7 +11,6 @@ const womenController = require("./Controllers/women.controller");
 const Authentication = require("./Middleware/authentication");
 const cartController = require("./Controllers/cart.controller");
 // const shoeController = require("./Controllers/shoe.controller");
-dotenv.config();
 
 app.use(express.json());
 
@@ -21,7 +21,7 @@ app.use(
     optionSuccessStatus: 200,
   })
 );
-const port_no = process.env.PORT || 8080;
+
 app.get("/", (req, res) => {
   res.send("homepage");
 });
@@ -33,7 +33,7 @@ app.use('/women',womenController)
 app.use('/cart',Authentication,cartController)
 
 
-app.listen(port_no, async () => {
+app.listen(process.env.PORT, async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
     console.log("connected to Mongoose server");
