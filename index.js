@@ -30,7 +30,7 @@ app.use('/user',userController)
 app.use('/shoe', shoeController)
 app.use('/men',menController)
 app.use('/women',womenController)
-app.use('/cart',Authentication,cartController)
+app.use('/cart',cartController)
 
 
 app.listen(process.env.PORT, async () => {
