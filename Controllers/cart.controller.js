@@ -31,13 +31,13 @@ cartController.patch("/:id/edit",async (req, res) => {
     { new: true }
   );
   
-  const finalData = await CART.find({UserId:UserId})
+  const finalData = await CART.find()
 
   return res.status(200).send(finalData);
 });
 
 cartController.post("/create",async (req, res) => {
-  const { productName, Image, price, size, color, quantity, UserId } = req.body;
+  const { productName, Image, price, size, color, quantity } = req.body;
   const data = await CART.create({
     productName,
     Image,
@@ -45,7 +45,6 @@ cartController.post("/create",async (req, res) => {
     size,
     color,
     quantity,
-    UserId,
   });
   return res.status(200).send({ message: "Item addeed", cart: data });
 });
