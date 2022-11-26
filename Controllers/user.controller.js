@@ -10,7 +10,7 @@ userController.post("/register", async (req, res) => {
 
   await bcrypt.hash(password, 8, async (err, hash) => {
     if (err) {
-      return res.status(511).send("password not hashed");
+      return res.status(401).send("password not hashed");
     }
     const user = await USER.create({ name, email, password: hash });
     return res.status(200).send({ mess: "Registred", user: user });
@@ -28,7 +28,7 @@ userController.post("/login", async (req, res) => {
 
   await bcrypt.compare(password, hashed_pass, (err, result) => {
     if (err) {
-      return res.status(511).send("bcryption failed");
+      return res.status(401).send("bcryption failed");
     }
     if (result) {
       const token = jwt.sign(
