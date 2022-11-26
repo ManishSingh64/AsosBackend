@@ -30,9 +30,9 @@ cartController.patch("/:id/edit", async (req, res) => {
     { size: size, quantity: quantity },
     { new: true }
   );
-
-  const finalData = await CART.find({UserId:UserId})
   
+  const finalData = await CART.find({UserId:UserId})
+
   return res.status(200).send(finalData);
 });
 
