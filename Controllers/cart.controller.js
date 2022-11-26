@@ -2,10 +2,11 @@ const express = require("express");
 const CART = require("../Schema/cart.schema");
 const cartController = express.Router();
 
-cartController.get("/:id", async (req, res) => {
-  const { id } = req.params;
+cartController.get("/", async (req, res) => {
+  // const { id } = req.params;
+  const { UserId } = req.body;
 
-  const items = await CART.find({ UserId: id });
+  const items = await CART.find({ UserId: UserId });
 
   res.status(200).send(items);
 });
@@ -14,7 +15,6 @@ cartController.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
 
   const deletedData = await CART.deleteOne({ _id: id });
-
 
   res.status(200).send("deleted");
 });
