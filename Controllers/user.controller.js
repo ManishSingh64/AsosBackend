@@ -40,6 +40,7 @@ userController.post("/login", async (req, res) => {
         token: token,
         email: email,
         name: user.name,
+        userId: user._Id,
       });
     } else {
       res.send("Inavalid Password");

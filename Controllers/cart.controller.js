@@ -5,7 +5,7 @@ const cartController = express.Router();
 cartController.get("/:id", async (req, res) => {
   const { id } = req.params;
 
-  const items = await CART.find({ id: id });
+  const items = await CART.find({ UserId: id });
 
   res.status(200).send(items);
 });
@@ -13,11 +13,10 @@ cartController.get("/:id", async (req, res) => {
 cartController.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
 
-  const deletedData = await CART.deleteOne({ id: id });
+  const deletedData = await CART.deleteOne({ _id: id });
 
-  const data = await CART.find();
 
-  res.status(200).send(data);
+  res.status(200).send("deleted");
 });
 
 cartController.patch("/:id/edit", async (req, res) => {
