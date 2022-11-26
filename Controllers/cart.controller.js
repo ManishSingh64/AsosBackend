@@ -11,7 +11,7 @@ cartController.get("/", async (req, res) => {
   res.status(200).send(items);
 });
 
-cartController.delete("/delete/:id", Authentication ,async (req, res) => {
+cartController.delete("/delete/:id" ,async (req, res) => {
   const { id } = req.params;
 
   const deletedData = await CART.deleteOne({ _id: id });
@@ -19,7 +19,7 @@ cartController.delete("/delete/:id", Authentication ,async (req, res) => {
   res.status(200).send("deleted");
 });
 
-cartController.patch("/:id/edit", Authentication,async (req, res) => {
+cartController.patch("/:id/edit",async (req, res) => {
   const { id } = req.params;
   console.log(id);
   const {UserId, size, quantity } = req.body;
@@ -36,7 +36,7 @@ cartController.patch("/:id/edit", Authentication,async (req, res) => {
   return res.status(200).send(finalData);
 });
 
-cartController.post("/create", Authentication,async (req, res) => {
+cartController.post("/create",async (req, res) => {
   const { productName, Image, price, size, color, quantity, UserId } = req.body;
   const data = await CART.create({
     productName,
